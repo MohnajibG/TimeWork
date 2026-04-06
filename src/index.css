@@ -5,16 +5,10 @@
     -apple-system, BlinkMacSystemFont, "San Francisco", system-ui, sans-serif;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 12px;
-}
-
-/* BODY – fond iOS + resto */
+/* BODY */
 body {
   margin: 0;
-  min-height: 50%;
-  background: #f5efe6; /* beige clair */
+  background: #f5efe6; /* beige italien */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,11 +17,20 @@ body {
 
 /* APP */
 .app {
+  margin: 50% auto;
   width: 100%;
   max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.logo {
+  border-radius: 50%;
 }
 
-/* CARD – look carte iPhone */
+/* CARD */
 .card {
   background: #fffdfa;
   border-radius: 20px;
@@ -35,12 +38,20 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* TITRE */
+/* TITRES */
 h1 {
   text-align: center;
   font-size: 1.5rem;
   margin-bottom: 14px;
-  color: #8b1d18; /* rouge resto */
+  color: #8b1d18; /* rouge Bella Notte */
+}
+
+h2 {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #2f6f4e; /* vert italien */
 }
 
 /* FORMULAIRE */
@@ -62,14 +73,13 @@ input[type="time"] {
   background: #fff;
 }
 
-/* focus iOS */
 input[type="time"]:focus {
-  border-color: #2f6f4e; /* vert italien */
+  border-color: #2f6f4e;
   outline: none;
   box-shadow: 0 0 0 3px rgba(47, 111, 78, 0.25);
 }
 
-/* BOUTON AJOUT */
+/* BOUTON */
 .add-btn {
   width: 100%;
   margin-top: 14px;
@@ -88,7 +98,7 @@ input[type="time"]:focus {
   opacity: 0.9;
 }
 
-/* SÉPARATEUR */
+/* SEPARATEUR */
 hr {
   border: none;
   height: 1px;
@@ -96,7 +106,7 @@ hr {
   margin: 16px 0;
 }
 
-/* ✅ LIGNE SALARIÉ – UNE SEULE LIGNE */
+/* ✅ LIGNE SALARIÉ (UNE SEULE LIGNE) */
 .employee {
   display: flex;
   align-items: center;
@@ -113,32 +123,45 @@ hr {
   color: #3f352a;
 }
 
-/* Horaires */
-.employee .hours {
+.hours {
   font-weight: 600;
   white-space: nowrap;
 }
 
-/* Pause */
-.employee .pause {
-  color: #6b5a46;
+.pause {
   font-size: 0.75rem;
+  color: #6b5a46;
   white-space: nowrap;
 }
 
-/* Résultat (le plus important) */
-.employee .result {
+.result {
   font-weight: 800;
   font-size: 1.1rem;
-  color: #2f6f4e; /* vert italien */
+  color: #2f6f4e;
   white-space: nowrap;
 }
+.employee {
+  position: relative;
+}
 
-/* TOTAL */
-h2:last-of-type {
-  margin-top: 14px;
-  text-align: center;
-  font-size: 1.4rem;
+/* Bouton supprimer */
+.remove-btn {
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: #9b1c1c; /* rouge */
+  color: white;
   font-weight: 800;
-  color: #2f6f4e;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.remove-btn:active {
+  transform: translateY(-50%) scale(0.9);
 }

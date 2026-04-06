@@ -35,28 +35,22 @@ const HeureCalculator = () => {
     const pause = pauseAutomatique(amplitude);
     const effectives = amplitude - pause;
 
-    setEmployees([
-      ...employees,
-      {
-        start,
-        end,
-        pause,
-        minutes: effectives,
-      },
-    ]);
+    setEmployees([...employees, { start, end, pause, minutes: effectives }]);
 
-    // reset des inputs
     setStart("");
     setEnd("");
+  };
+
+  const removeEmployee = (indexToRemove) => {
+    setEmployees(employees.filter((_, index) => index !== indexToRemove));
   };
 
   const totalMinutes = employees.reduce((sum, emp) => sum + emp.minutes, 0);
 
   return (
     <div className="card">
-      <h1>ShiftCuisine</h1>
+      <h1>Heure Calculator</h1>
 
-      {/* INPUT UNIQUE */}
       <label>Début de service</label>
       <input
         type="time"
@@ -71,21 +65,26 @@ const HeureCalculator = () => {
         ➕ Ajouter un Cast Member
       </button>
 
-      {/* RÉCAPITULATIF */}
       {employees.length > 0 && (
         <>
           <hr />
           <h2>Récapitulatif</h2>
 
           {employees.map((emp, index) => (
-            <div key={index} className="employee-line">
-              <span className="emp-hours">
+            <div key={index} className="employee">
+              <span className="hours">
                 {emp.start} → {emp.end}
               </span>
 
-              <span className="emp-pause">Pause {emp.pause} min</span>
+              <span className="pause">Pause {emp.pause} min</span>
 
-              <span className="emp-result">{minutesEnHHMM(emp.minutes)}</span>
+              <span className="result">{minutesEnHHMM(emp.minutes)}</span>
+              <button
+                className="remove-btn"
+                onClick={() => removeEmployee(index)}
+              >
+                ✕
+              </button>
             </div>
           ))}
 
