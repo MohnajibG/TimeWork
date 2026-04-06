@@ -1,13 +1,144 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* RESET */
+* {
+  box-sizing: border-box;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "San Francisco", system-ui, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.logo {
+  display: block;
+  margin: 0 auto 12px;
+}
+
+/* BODY – fond iOS + resto */
+body {
+  margin: 0;
+  min-height: 50%;
+  background: #f5efe6; /* beige clair */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+}
+
+/* APP */
+.app {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* CARD – look carte iPhone */
+.card {
+  background: #fffdfa;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* TITRE */
+h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+  color: #8b1d18; /* rouge resto */
+}
+
+/* FORMULAIRE */
+label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #5c4b3a;
+  margin-top: 10px;
+  display: block;
+}
+
+input[type="time"] {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 4px;
+  font-size: 1.05rem;
+  border-radius: 16px;
+  border: 1px solid #dbcbb2;
+  background: #fff;
+}
+
+/* focus iOS */
+input[type="time"]:focus {
+  border-color: #2f6f4e; /* vert italien */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47, 111, 78, 0.25);
+}
+
+/* BOUTON AJOUT */
+.add-btn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 18px;
+  border: none;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #9b1c1c, #7a1313);
+  cursor: pointer;
+}
+
+.add-btn:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+/* SÉPARATEUR */
+hr {
+  border: none;
+  height: 1px;
+  background: #e6dccc;
+  margin: 16px 0;
+}
+
+/* ✅ LIGNE SALARIÉ – UNE SEULE LIGNE */
+.employee {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  background: #fff8ef;
+  border-radius: 14px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+
+  border: 1px solid #eadcc4;
+  font-size: 0.8rem;
+  color: #3f352a;
+}
+
+/* Horaires */
+.employee .hours {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Pause */
+.employee .pause {
+  color: #6b5a46;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+/* Résultat (le plus important) */
+.employee .result {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #2f6f4e; /* vert italien */
+  white-space: nowrap;
+}
+
+/* TOTAL */
+h2:last-of-type {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #2f6f4e;
 }
