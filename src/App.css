@@ -1,38 +1,169 @@
+/* RESET DE BASE */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+/* APP */
 .App {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e293b, #020617);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #e5e7eb;
+}
+
+/* CARD PRINCIPALE */
+.card {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* TITRES */
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h2 {
+  margin-top: 16px;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* FORM */
+label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  font-size: 0.85rem;
+  opacity: 0.8;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+input[type="time"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: none;
+  background: #020617;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+input[type="time"]:focus {
+  box-shadow: 0 0 0 2px #38bdf8;
+}
+
+/* BOUTONS */
+button {
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+/* AJOUT */
+.add-btn {
+  margin-top: 16px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #020617;
+  font-weight: 600;
+}
+
+.add-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+/* TOGGLE PAUSE */
+.pause-toggle {
+  margin: 12px auto;
+  display: block;
+  padding: 10px 14px;
+  background: #020617;
+  color: #38bdf8;
+  border: 1px solid #38bdf8;
+}
+
+.pause-toggle.active {
+  background: #38bdf8;
+  color: #020617;
+}
+
+/* LISTE EMPLOYÉS */
+.employee {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: rgba(2, 6, 23, 0.8);
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+/* TEXTE DANS LISTE */
+.hours {
+  font-weight: 500;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.pause {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.result {
+  font-weight: 600;
+  color: #38bdf8;
+}
+
+/* SUPPRESSION */
+.remove-btn {
+  background: transparent;
+  color: #ef4444;
+  font-size: 1.1rem;
+}
+
+.remove-btn:hover {
+  transform: scale(1.1);
+}
+
+/* SEPARATEUR */
+hr {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 16px 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .card {
+    padding: 18px;
   }
-  to {
-    transform: rotate(360deg);
+
+  h1 {
+    font-size: 1.4rem;
   }
 }

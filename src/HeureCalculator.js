@@ -25,6 +25,7 @@ const HeureCalculator = () => {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [employees, setEmployees] = useState([]);
+  const [pausesActives, setPausesActives] = useState(false);
 
   const addEmployee = () => {
     if (!start || !end) return;
@@ -33,19 +34,30 @@ const HeureCalculator = () => {
     if (amplitude <= 0) return;
 
     const pause = pauseAutomatique(amplitude);
-    const effectives = amplitude - pause;
+    const effectif = amplitude - pause;
 
-    setEmployees([...employees, { start, end, pause, minutes: effectives }]);
+    setEmployees([
+      ...employees,
+      {
+        start,
+        end,
+        amplitude,
+        pause,
+        effectif,
+      },
+    ]);
 
     setStart("");
     setEnd("");
   };
 
-  const removeEmployee = (indexToRemove) => {
-    setEmployees(employees.filter((_, index) => index !== indexToRemove));
+  const removeEmployee = (index) => {
+    setEmployees(employees.filter((_, i) => i !== index));
   };
 
-  const totalMinutes = employees.reduce((sum, emp) => sum + emp.minutes, 0);
+  const totalMinutes = employees.reduce((sum, emp) => {
+    return pausesActives ? sum + emp.amplitude : sum + emp.effectif;
+  }, 0);
 
   return (
     <div className="card">
@@ -68,6 +80,14 @@ const HeureCalculator = () => {
       {employees.length > 0 && (
         <>
           <hr />
+
+          <button
+            className={`pause-toggle ${pausesActives ? "active" : ""}`}
+            onClick={() => setPausesActives(!pausesActives)}
+          >
+            {pausesActives ? "✅ Pauses incluses" : "⏸️ Inclure les pauses"}
+          </button>
+
           <h2>Récapitulatif</h2>
 
           {employees.map((emp, index) => (
@@ -78,7 +98,10 @@ const HeureCalculator = () => {
 
               <span className="pause">Pause {emp.pause} min</span>
 
-              <span className="result">{minutesEnHHMM(emp.minutes)}</span>
+              <span className="result">
+                {minutesEnHHMM(pausesActives ? emp.amplitude : emp.effectif)}
+              </span>
+
               <button
                 className="remove-btn"
                 onClick={() => removeEmployee(index)}
@@ -89,7 +112,10 @@ const HeureCalculator = () => {
           ))}
 
           <hr />
-          <h2>Total effectif : {minutesEnHHMM(totalMinutes)}</h2>
+          <h2>
+            Total {pausesActives ? "(pauses incluses)" : "(effectif)"} :{" "}
+            {minutesEnHHMM(totalMinutes)}
+          </h2>
         </>
       )}
     </div>
